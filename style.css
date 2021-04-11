@@ -1,0 +1,120 @@
+body {
+    background-color: #878c8e;
+}
+
+h1 {
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    margin-right: 55%;
+    font-size: 12em;
+    text-align: left;
+    text-shadow: 15px 20px 20px rgb(40, 58, 75);
+}
+
+
+h1 {
+    animation: fadein 5s ease-in;
+    -moz-animation: fadein 5s ease-in; /* Firefox */
+    -webkit-animation: fadein 5s ease-in; /* Safari et Chrome */
+    -o-animation: fadein 5s ease-in; /* Opera */
+}
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* sur Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* sur Safari et Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("moi5.JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.a-propos {
+    margin-left: 5%;
+    margin-right: 55%;
+    text-align: justify;
+    background-color: #003449;
+    padding: 20px;
+    padding-top: 5px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 3px 0px 10px 10px white;
+}
+
+.a-propos h2 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2.4em;
+    margin-left: 20px;
+}
+
+.a-propos h2:hover {
+    color: #878c8e;
+    transition: 1s;
+}
+
+.a-propos p {
+    font-family: sans-serif;
+    line-height: 27px;
+}
+
+.a-propos p::first-letter {
+    font-size: 2em;
+}
+
+.a-propos i {
+    font-family: Menlo;
+    font-size: 20px;
+}
+
+
+
+
+::-webkit-scrollbar-track {
+    	border-radius: 10px;
+	background-color: #878c8e;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	background-color: #878c8e;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #878c8e;
+}
