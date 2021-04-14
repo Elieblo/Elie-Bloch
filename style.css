@@ -1,16 +1,56 @@
 body {
     background-color: #878c8e;
+    margin: 0;
 }
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 400vw;
+}
+
+.outer-wrapper {
+    width: 100vh;
+    height: 100vw;
+    transform: rotate(-90deg) translateX(-100vh);
+    transform-origin: top left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: absolute;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
 
 h1 {
     color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bolder;
-    text-align: center;
-    margin-right: 55%;
-    font-size: 12em;
+    margin-top: 15px;
+    margin-left: 50%;
+    font-size: 14em;
     text-align: left;
-    text-shadow: 15px 20px 20px rgb(40, 58, 75);
+    text-shadow: 15px 20px 20px #003449;
+    line-height: 180px;
+}
+
+h1::first-line {
+    letter-spacing: 14px;
+}
+
+
+h5 {
+    color: #003449;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-weight: italic;
+    position: absolute;
+    margin-left: 20%;
+    margin-top: 55vh;
+    font-size: 20px;
+}
+
+.header.scroll {
+    display: none;
 }
 
 
@@ -19,6 +59,7 @@ h1 {
     -moz-animation: fadein 5s ease-in; /* Firefox */
     -webkit-animation: fadein 5s ease-in; /* Safari et Chrome */
     -o-animation: fadein 5s ease-in; /* Opera */
+
 }
 @keyframes fadein {
     from {
@@ -45,35 +86,55 @@ h1 {
     }
 }
 
+
 .header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 96vh;
+    width: 24.5%;
     background: url("moi5.JPG");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    border: 7px solid #003449;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
 }
 
-canvas {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
+
+
 
 .a-propos {
-    margin-left: 5%;
-    margin-right: 55%;
-    text-align: justify;
+    height: 96vh;
+    width: 24.5%;
+    border: 7px solid #003449;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.text {
     background-color: #003449;
     padding: 20px;
     padding-top: 5px;
     color: white;
     border-radius: 10px;
     box-shadow: 3px 0px 10px 10px white;
+    line-height: 27px;
+    margin-left: 7%;
+    margin-right: 55%;
+    width: 600px;
+    margin-top: 30px;
+}
+
+.a-propos p {
+    color: white;
+    font-family: sans-serif;
+    line-height: 27px;
+    text-align: justify;
 }
 
 .a-propos h2 {
@@ -87,10 +148,6 @@ canvas {
     transition: 1s;
 }
 
-.a-propos p {
-    font-family: sans-serif;
-    line-height: 27px;
-}
 
 .a-propos p::first-letter {
     font-size: 2em;
@@ -101,20 +158,76 @@ canvas {
     font-size: 20px;
 }
 
-
-
-
-::-webkit-scrollbar-track {
-    	border-radius: 10px;
-	background-color: #878c8e;
+.a-propos img {
+    width: 500px;
+    border-radius: 10px;
+    float: right;
+    margin-right: 7%;
+    margin-top: 30px;
+    box-shadow: 3px 0px 10px 10px white;
 }
+
+.a-propos img:hover {
+    transform: rotate(-360deg);
+    transition: 5s ease-out;
+    border: 20px solid #003449;
+    width: 500px;
+}
+
+
+.char{
+    animation: an 1s ease-out 1 both;
+    display: inline-block;
+}
+
+@keyframes an {
+    from{
+        opacity: 0;
+        transform: perspective(500px) translate3d(-35px, -40px, -150px) rotate3d(1, -1, 0, 35deg);
+    }
+    to{
+        opacity: 1;
+        transform: perspective(500px) translate3d(0, 0, 0);
+    }
+}
+
+
+
+
+.sommaire {
+    height: 96vh;
+    width: 24.5%;
+    border: 7px solid #003449;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.sommaire h2 {
+    font-family: Menlo;
+    font-size: 100px;
+    text-shadow: 15px 20px 20px #003449;
+    color: white;
+    margin-left: 180px;
+    margin-top: 40px;
+}
+
+.sommaire li {
+    color: white;
+    margin-left: 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 70px;
+    list-style: none;
+    font-size: 30px;
+}
+
+
+
 
 ::-webkit-scrollbar {
-	width: 12px;
-	background-color: #878c8e;
+    display: none;
 }
 
-::-webkit-scrollbar-thumb {
-	border-radius: 10px;
-	background-color: #878c8e;
+::selection {
+    color: red;
 }
