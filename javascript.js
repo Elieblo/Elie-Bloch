@@ -1,67 +1,58 @@
-const canvasEl = document.querySelector('#canvas');
 
-const w = canvasEl.width = window.innerWidth;
-const h = canvasEl.height = window.innerHeight * 2;
+//EFFET DE TIPEWRITER PAGE 1//
 
-function loop() {
-  requestAnimationFrame(loop);
-	ctx.clearRect(0,0,w,h);
+document.addEventListener('DOMContentLoaded',function(event){
+    var dataText = [ "Défilez pour voir plus 🡺"];
   
-  confs.forEach((conf) => {
-    conf.update();
-    conf.draw();
-  })
-}
-
-function Confetti () {
-  //construct confetti
-  const colours = ['#fde132', '#009bde', '#ff6b00'];
+    function typeWriter(text, i, fnCallback) {
+      if (i < (text.length)) {
+       document.querySelector("h5").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
   
-  this.x = Math.round(Math.random() * w);
-  this.y = Math.round(Math.random() * h)-(h/2);
-  this.rotation = Math.random()*360;
+        // wait for a while and call this function again for next character
+        setTimeout(function() {
+          typeWriter(text, i + 1, fnCallback)
+        }, 100);
+      }
+      // text finished, call callback if there is a callback function
+      else if (typeof fnCallback == 'function') {
+        // call callback after timeout
+        setTimeout(fnCallback, 700);
+      }
+    }
+    // start a typewriter animation for a text in the dataText array
+     function StartTextAnimation(i) {
+       if (typeof dataText[i] == 'undefined'){
+          setTimeout(function() {
+            StartTextAnimation(0);
+          }, 1700);
+       }
+       // check if dataText[i] exists
+      if (i < dataText[i].length) {
+       typeWriter(dataText[i], 0, function(){
+         StartTextAnimation(i + 1);
+       });
+      }
+    }
+    StartTextAnimation(0);
+  });
 
-  const size = Math.random()*(w/60);
-  this.size = size < 15 ? 15 : size;
 
-  this.color = colours[Math.floor(colours.length * Math.random())];
 
-  this.speed = this.size/7;
-  
-  this.opacity = Math.random();
+  //EFFET SCROLL PAGE 1//
 
-  this.shiftDirection = Math.random() > 0.5 ? 1 : -1;
-}
+  var text = document.getElementById('about');
+  var newDom = '';
+  var animationDelay = 6;
 
-Confetti.prototype.border = function() {
-  if (this.y >= h) {
-    this.y = h;
+  for(let i = 0; i < text.innerText.length; i++)
+  {
+      newDom += '<span class="char">' + (text.innerText[i] == ' ' ? '&nbsp;' : text.innerText[i])+ '</span>';
   }
-}
 
-Confetti.prototype.update = function() {
-  this.y += this.speed;
-  
-  if (this.y <= h) {
-    this.x += this.shiftDirection/3;
-    this.rotation += this.shiftDirection*this.speed/100;
+  text.innerHTML = newDom;
+  var length = text.children.length;
+
+  for(let i = 0; i < length; i++)
+  {
+      text.children[i].style['animation-delay'] = animationDelay * i + 'ms';
   }
-
-  if (this.y > h) this.border();
-};
-
-Confetti.prototype.draw = function() {
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
-  ctx.lineTo(this.x, this.y);
-  ctx.closePath();
-  ctx.globalAlpha = this.opacity;
-  ctx.fillStyle = this.color;
-  ctx.fill();
-};
-
-const ctx = canvasEl.getContext('2d');
-const confNum = Math.floor(w / 4);
-const confs = new Array(confNum).fill().map(_ => new Confetti());
-
-loop();
